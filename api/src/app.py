@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 
-from src.blueprints.topics import topics_data
+from blueprints.topics import topics_data
 
 app = Flask(__name__)
 CORS(app)

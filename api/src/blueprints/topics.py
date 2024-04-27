@@ -1,5 +1,5 @@
 from flask import Blueprint
-from src.helpers.config import load_config
+from helpers.config import load_config
 
 topics_data = Blueprint('topics_data', __name__)
 
