@@ -5,7 +5,7 @@ from blueprints.topics import topics_data
 
 app = Flask(__name__)
 CORS(app)
-app.register_blueprint(topics_data)
+app.register_blueprint(topics_data, url_prefix="/api")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
