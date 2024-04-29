@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import { transformToUrl } from '../utils';
 
 export default function Topics() {
   const [topics, setTopics] = useState([])
@@ -39,16 +41,16 @@ export default function Topics() {
 
 
       <h2>Todos os Tópicos</h2>
-      {topics.map((topic, i) => (
-        <ul>
+      <ul>
+        {topics.map((topic, i) => (
           <li key={i} className='topics-item'>
-            <h3>{topic.title}</h3>
+            <Link to={`topic/${transformToUrl(topic.title)}`} >{topic.title}</Link>
             <p className='topic-info'>{topic.description}</p>
             <p className='topic-stats'>Likes: {topic.likes}</p>
             <p className='topic-stats'>Mensagens: {topic.messages}</p>
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 }
