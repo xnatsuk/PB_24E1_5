@@ -1,15 +1,15 @@
 
-#  PB_24E1_5
+# PB_24E1_5
 
 > Projeto de Bloco: Desenvolvimento Front-end com Frameworks
 
-##  ⭐️ Descrição
+## ⭐️ Descrição
 
 O projeto escolhido pelo professor é um fórum gamificado.
 
 Nesta plataforma o usuário poderá postar e responder tópicos, recebendo pontos e recompensas por sua participação.
 
-##  ✨ Objetivos
+## ✨ Objetivos
 
 O objetivo é desenvolver uma plataforma que permita que
 seus usuários criem e participem em tópicos de interesse.
@@ -32,83 +32,83 @@ seus usuários criem e participem em tópicos de interesse.
 
 - Implementar um sistema de ranking para mostrar os usuários com mais pontos.
 
-##  🚀 Como usar
+## 🚀 Como usar
 
 Você pode rodar o projeto **localmente** ou com **Docker**.
 
->  **Observação:** é recomendado rodar o projeto com **Docker** para evitar problemas com dependências e configurações locais.
+> **Observação:** é recomendado rodar o projeto com **Docker** para evitar problemas com dependências e configurações locais.
 
-###  Rodando com Docker
+### Rodando com Docker
 
 Para rodar o projeto com **Docker**, você precisará ter instalado:
 
 - [Docker](https://www.docker.com/)
 
-####  1. Clone este repositório
+#### 1. Clone este repositório
 
 ```sh
-git  clone  https://github.com/xnatsuk/PB_24E1_5.git
+git clone https://github.com/xnatsuk/PB_24E1_5.git
 ```
 
-####  2. Acesse a pasta do projeto
+#### 2. Acesse a pasta do projeto
 
 ```sh
-cd  PB_24E1_5
+cd PB_24E1_5
 ```
 
-####  3. Execute o comando para subir o container
+#### 3. Execute o comando para subir o container
 
 ```sh
-docker-compose  up  -d
+docker-compose up -d
 ```
 
-####  4. Acesse o projeto
+#### 4. Acesse o projeto
 client: http://localhost:3000
 
 api: http://localhost:5000
 
-###  Rodando localmente
+### Rodando localmente
 
 Para rodar o projeto **localmente**, você precisará ter instalado:
 
--  [Node.js](https://nodejs.org/en/)
+- [Node.js](https://nodejs.org/en/)
 
--  [pnpm](https://pnpm.io/)
+- [pnpm](https://pnpm.io/)
 
--  [Python 3.10](https://www.python.org/downloads/)
+- [Python 3.10](https://www.python.org/downloads/)
 
--  [Poetry](https://python-poetry.org/)
+- [Poetry](https://python-poetry.org/)
 
-####  1. Clone este repositório
-
-```sh
-git  clone https://github.com/xnatsuk/PB_24E1_5.git
-```
-
-####  2. Acesse a pasta do projeto
+#### 1. Clone este repositório
 
 ```sh
-cd  PB_24E1_5
+git clone https://github.com/xnatsuk/PB_24E1_5.git
 ```
 
-####  3. Instale as dependências e inicie o client
+#### 2. Acesse a pasta do projeto
 
 ```sh
-cd  client
-pnpm  install
-pnpm  dev
+cd PB_24E1_5
 ```
 
-####  4. Instale as dependências e inicie a api
+#### 3. Instale as dependências e inicie o client
 
 ```sh
-cd  ..
-cd  api
-poetry  install
-poetry  run  python  src/app.py
+cd client
+pnpm install
+pnpm dev
 ```
 
-####  5. Acesse o projeto
+#### 4. Instale as dependências e inicie a api
+
+```sh
+cd ..
+cd api
+poetry install
+poetry run python src/app.py
+```
+
+#### 5. Acesse o projeto
 
 client: http://localhost:3000
 
