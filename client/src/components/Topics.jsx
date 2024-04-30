@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { transformToUrl } from '../utils';
+import { TopicCard } from './TopicCard';
 
-export default function Topics() {
+export const Topics = () => {
   const [topics, setTopics] = useState([])
   const [mostPopular, setMostPopular] = useState(null)
 
@@ -25,32 +24,36 @@ export default function Topics() {
   }
 
   return (
-    <div className="topics">
-      <h2>Popular no Momento</h2>
-      <div className='popular'>
-        <h3>
-          {mostPopular
-            ? mostPopular.title
-            : 'Nenhum tópico popular no momento'
+    <div className='flex flex-col gap-10 justify-between'>
+      <div className='divide-x-4 divide-orange-300 space-y-5'>
+        <h2 className='text-3xl text-center font-semibold'>Popular no Momento</h2>
+        <TopicCard
+          title={
+            mostPopular
+              ? mostPopular.title
+              : 'Nenhum tópico popular no momento'
           }
-        </h3>
-        <p className='topic-info'>{mostPopular?.description}</p>
-        <p className='topic-stats'>Likes: {mostPopular?.likes}</p>
-        <p className='topic-stats'>Mensagens: {mostPopular?.messages}</p>
+          description={mostPopular?.description}
+          likes={mostPopular?.likes}
+          messages={mostPopular?.messages}
+        />
       </div>
 
-
-      <h2>Todos os Tópicos</h2>
-      <ul>
-        {topics.map((topic, i) => (
-          <li key={i} className='topics-item'>
-            <Link to={`topic/${transformToUrl(topic.title)}`} >{topic.title}</Link>
-            <p className='topic-info'>{topic.description}</p>
-            <p className='topic-stats'>Likes: {topic.likes}</p>
-            <p className='topic-stats'>Mensagens: {topic.messages}</p>
-          </li>
-        ))}
-      </ul>
+      <div className='space-y-5'>
+        <h2 className='text-3xl text-center font-semibold'>Todos os Tópicos</h2>
+        <ul>
+          {topics.map((topic, i) => (
+            <li key={i}>
+              <TopicCard
+                title={topic.title}
+                description={topic.description}
+                likes={topic.likes}
+                messages={topic.messages}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
