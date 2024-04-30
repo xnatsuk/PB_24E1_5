@@ -1,17 +1,11 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import { Navbar } from '../components/Navbar'
 
-export default function Layout() {
+export const Layout = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <main>
+      <Navbar />
+      <main className='bg-zinc-900 text-slate-300 tracking-wide text-lg' >
         <Outlet />
       </main>
     </>
