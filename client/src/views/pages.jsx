@@ -1,6 +1,6 @@
-import Layout from '../layouts/default';
-import Home from './Home';
-import Topic from './Topic';
+import { Layout } from '../layouts/default';
+import { Home } from './Home';
+import { Topic } from './Topic';
 
 export const pages = [
   {
