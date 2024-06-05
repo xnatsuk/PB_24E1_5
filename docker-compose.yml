@@ -3,16 +3,26 @@ services:
     build:
       context: ./client
       dockerfile: ./Dockerfile
+    container_name: client
+    environment:
+      VITE_SUPABASE_URL: ${SUPABASE_URL}
+      VITE_SUPABASE_KEY: ${SUPABASE_KEY}
     ports:
       - "3000:3000"
+    volumes:
+      - ./client:/app
     depends_on:
-      - api
+      - backend
 
-  api:
+  backend:
     build:
-      context: ./api
+      context: ./backend
       dockerfile: ./Dockerfile
+    container_name: backend
     environment:
-      FLASK_ENV: development
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_KEY: ${SUPABASE_KEY}
     ports:
       - "5000:5000"
+    volumes:
+      - ./backend:/app

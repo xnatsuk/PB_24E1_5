@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "api"
+version = "0.8.0"
+description = "project api"
+authors = ["xnatsuk <xnatsuk@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg2-binary = "^2.9.9"
+itsdangerous = "^2.2.0"
+pyjwt = { extras = ["crypto"], version = "^2.8.0" }
+supabase = "^2.4.6"
+ruff = "^0.4.6"
+python-dotenv = "^1.0.1"
+fastapi = "^0.111.0"
+uvicorn = { extras = ["standard"], version = "^0.30.0" }
+pydantic = "^2.7.2"
+pydantic-settings = "^2.2.1"
+supabase-py-async = "^2.5.6"
+pytest = "^8.2.1"
+faker = "^25.3.0"
+
+[tool.ruff.lint]
+extend-select = ["UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["E402", "F401", "F403"]
+
+[tool.poetry.dev-dependencies]
+pylama = "^8.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
