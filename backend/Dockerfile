@@ -5,11 +5,8 @@ WORKDIR /app
 RUN pip install poetry==1.8.2
 COPY poetry.lock pyproject.toml /
 RUN poetry config virtualenvs.create false
-RUN poetry install
+RUN poetry install --no-root
 
-COPY ./src /app
+COPY . /app
 
-ARG flask_env
-ENV FLASK_ENV $flask_env
-
-CMD python app.py
+CMD ["poetry", "run", "fastapi","dev", "src/main.py","--host", "0.0.0.0", "--port", "5000"]
