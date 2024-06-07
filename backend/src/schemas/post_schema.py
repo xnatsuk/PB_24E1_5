@@ -3,14 +3,14 @@ from typing import ClassVar
 from src.schemas.base_schema import CreateBase, UpdateBase, InDbBase, ResponseBase
 
 
-class TopicCreate(CreateBase):
+class PostCreate(CreateBase):
     title: str
     description: str | None = None
     content: str | None = None
     likes: int = 0
 
 
-class TopicUpdate(UpdateBase):
+class PostUpdate(UpdateBase):
     id: int
     author: str
     title: str | None = None
@@ -19,7 +19,7 @@ class TopicUpdate(UpdateBase):
     likes: int
 
 
-class Topics(ResponseBase):
+class Posts(ResponseBase):
     id: int
     author: str
     title: str
@@ -27,10 +27,10 @@ class Topics(ResponseBase):
     content: str | None = None
     likes: int
 
-    table_name: ClassVar[str] = "topics"
+    table_name: ClassVar[str] = "posts"
 
 
-class TopicInDB(InDbBase):
+class PostInDB(InDbBase):
     id: int
     author: str
     title: str
