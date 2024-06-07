@@ -1,5 +1,5 @@
-export const TopicPost = ({ post }) => (
-  <>
+export function TopicPost({ post }) {
+  return (
     <div className="flex flex-col justify-between overflow-hidden p-5 w-full border-t border-orange-300 shadow-2xl rounded-lg">
       <div>
         <h1 className="px-4 py-2 text-2xl text-orange-400">
@@ -7,11 +7,11 @@ export const TopicPost = ({ post }) => (
         </h1>
 
         <div className="inline-flex px-4">
-          <p >
+          <p>
             {post.description}
           </p>
         </div>
-      </div >
+      </div>
 
       <div className="mx-auto px-4 my-10">
         <p>
@@ -21,13 +21,17 @@ export const TopicPost = ({ post }) => (
 
       <div className="flex justify-between md:justify-around mt-2 ">
         <p>
-          Likes: {post.likes}
+          Likes:
+          {' '}
+          {post.likes}
         </p>
         <p>
-          Mensagens: {post.messages}
+          Mensagens:
+          {' '}
+          {post.messages}
         </p>
       </div>
 
-    </div >
-  </>
-)
+    </div>
+  )
+}
