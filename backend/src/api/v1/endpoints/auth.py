@@ -26,7 +26,8 @@ async def register_user(register: UserCreate) -> dict[str, str]:
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.get("/authorize")
+# Not yet implemented
+@router.get("/authorize", include_in_schema=False)
 async def auth_provider(provider: Literal['google'], redirect_to: str | None = None) -> RedirectResponse:
     try:
         provider_response = await User.login_provider(provider=provider, redirect_to=redirect_to)
