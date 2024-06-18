@@ -39,5 +39,4 @@ export const useAuthStore = create(set => ({
     await supabase.auth.signOut()
     set(initialState)
   },
-
 }))
