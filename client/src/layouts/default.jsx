@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
+import { AuthProvider } from '../hooks/AuthProvider'
 
 export function Layout() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
-      <main className="bg-zinc-900 text-slate-300">
+      <main className="bg-zinc-900 text-slate-300 min-h-screen px-3">
         <Outlet />
       </main>
-    </>
+    </AuthProvider>
   )
 }
