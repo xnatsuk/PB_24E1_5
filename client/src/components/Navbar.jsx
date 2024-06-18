@@ -1,20 +1,33 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { useAuthStore } from '../stores/auth.store'
+import { supabase } from '../utils/supabase'
+import { BaseNavbar } from './base/BaseNav'
 
-export const Navbar = () => (
-  <nav className=' px-4 py-4 w-full bg-zinc-800'>
-    <ul className='container flex flex-row justify-between items-center mx-auto'>
-      <li className='text-4xl text-orange-400 font-bold tracking-wide'>
-        Gamefied
-      </li>
+export function Navbar() {
+  const { session } = useAuthStore()
+  const logout = async () => await supabase.auth.signOut()
 
-      < li>
-        <Link
-          className='text-gray-300 hover:text-gray-100 cursor-pointer font-medium tracking-wide text-2xl'
-          to="/"
-        >
-          Início
-        </Link>
-      </li >
-    </ul >
-  </nav >
-)
+  return (
+    <BaseNavbar title="Gamefied">
+      <NavLink className=" aria-[current=page]:text-white hover:text-white" to="/">Início</NavLink>
+      {!session
+        ? (
+          <NavLink
+            className=" aria-[current=page]:text-white hover:text-white"
+            to="/auth"
+          >
+            Entrar
+          </NavLink>
+        )
+        : (
+          <NavLink
+            className=" aria-[current=page]:text-white hover:text-white"
+            onClick={logout}
+          >
+            Sair
+          </NavLink>
+        )}
+
+    </BaseNavbar>
+  )
+}
