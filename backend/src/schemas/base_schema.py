@@ -1,4 +1,5 @@
 from typing import ClassVar
+
 from pydantic import BaseModel, ConfigDict
 
 
@@ -7,13 +8,11 @@ class CreateBase(BaseModel):
 
 
 class UpdateBase(BaseModel):
-    id: str
+    id: str | int
 
 
 class InDbBase(BaseModel):
-    id: str
-    created_at: str
-    updated_at: str
+    id: str | int
 
 
 # return to client

@@ -2,7 +2,7 @@ from typing import Generic, TypeVar
 
 from supabase_py_async import AsyncClient
 
-from src.schemas import UserData, CreateBase, ResponseBase, UpdateBase
+from src.schemas import CreateBase, ResponseBase, UpdateBase, Posts
 
 ModelType = TypeVar("ModelType", bound=ResponseBase)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=CreateBase)
@@ -23,7 +23,7 @@ class BaseService(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         _, created = data
         return self.model(**created[0])  # must be a mapping
 
-    async def get(self, db: AsyncClient, *, id: str) -> ModelType | None:
+    async def get(self, db: AsyncClient, id: str | int) -> ModelType | None:
         data, count = (
             await db
             .table(self.model.table_name)
@@ -44,12 +44,12 @@ class BaseService(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         _, got = data
         return [self.model(**item) for item in got]
 
-    async def get_multi_by_owner(self, db: AsyncClient, *, user: UserData) -> list[ModelType]:
+    async def get_multi_by_owner(self, db: AsyncClient, *, id: str) -> list[Posts]:
         data, count = (
             await db
             .table(self.model.table_name)
             .select("*")
-            .eq("user_id", user.user_id)
+            .eq("user_id", id)
             .execute()
         )
         _, created = data
@@ -59,7 +59,7 @@ class BaseService(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         data, count = (
             await db
             .table(self.model.table_name)
-            .update(obj_in.model_dump())
+            .update(obj_in.model_dump(mode="json"))
             .eq("id", obj_in.id)
             .execute()
         )
