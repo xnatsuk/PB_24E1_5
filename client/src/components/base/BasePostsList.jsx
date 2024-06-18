@@ -5,8 +5,8 @@ export function BasePostsList(props) {
   const { children, mostPopular } = props
   return (
     <div className="flex flex-col gap-10 justify-between">
-      <div className=" m-auto divide-x-4 divide-orange-300 space-y-5 mt-10">
-        <h2 className="flex items-center justify-around text-3xl font-semibold">
+      <div className=" m-auto divide-x-4 divide-purple-500 space-y-5 my-10">
+        <h2 className="flex items-center justify-around text-3xl font-semibold mb-16">
           <Sparkles size={30} color="#efa3c5" />
           Popular no Momento
         </h2>

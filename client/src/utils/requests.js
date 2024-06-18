@@ -6,13 +6,11 @@ class AxiosRequest {
   constructor(config) {
     this.instance = axios.create(config)
     this.instance.interceptors.request.use((config) => {
-      if (config.url !== '/auth/login') {
-        const token = useAuthStore.session?.access_token
-        if (token)
-          config.headers.Authorization = `Bearer ${token}`
-        else
-          config.headers.Authorization = `Bearer ${SUPABASE_KEY}`
-      }
+      const token = useAuthStore.getState().session?.access_token
+      if (token)
+        config.headers.Authorization = `Bearer ${token}`
+      else
+        config.headers.Authorization = `Bearer ${SUPABASE_KEY}`
 
       return config
     }, error => Promise.reject(error))

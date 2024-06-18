@@ -1,16 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import { useAuthStore } from '../stores/auth.store'
-import { supabase } from '../utils/supabase'
 import { BaseNavbar } from './base/BaseNav'
 
 export function Navbar() {
-  const { session } = useAuthStore()
-  const logout = async () => await supabase.auth.signOut()
+  const { logout, user } = useAuthStore()
 
   return (
     <BaseNavbar title="Gamefied">
       <NavLink className=" aria-[current=page]:text-white hover:text-white" to="/">Início</NavLink>
-      {!session
+      {!user
         ? (
           <NavLink
             className=" aria-[current=page]:text-white hover:text-white"
