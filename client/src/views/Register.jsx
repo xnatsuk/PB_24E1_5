@@ -1,24 +1,25 @@
 import { useState } from 'react'
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { BaseRegister } from '../components/base/BaseRegister'
-import { supabase } from '../utils/supabase'
+import { useAuthStore } from '../stores/auth.store'
 
 export function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [username, setUsername] = useState('')
+  const { register } = useAuthStore()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { user, session, error } = await supabase.auth.signUp({ email, password }, { data: { username } })
-
-    if (error)
-      console.error('Error signing up:', error.message)
-    else
-      redirect('auth/login')
-
-    return user && session
+    try {
+      await register(email, password, username)
+      navigate('/')
+    }
+    catch (error) {
+      console.error(error)
+    }
   }
 
   return (

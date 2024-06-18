@@ -1,25 +1,23 @@
 import { useState } from 'react'
-import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { BaseLogin } from '../components/base/BaseLogin'
-import { supabase } from '../utils/supabase'
+import { useAuthStore } from '../stores/auth.store'
 
 export function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { login } = useAuthStore()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { user, session, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-
-    if (error)
-      console.error('Error signing in:', error.message)
-    else
-      redirect('/')
-
-    return user && session
+    try {
+      await login(email, password)
+      navigate('/')
+    }
+    catch (error) {
+      console.error('Error logging in:', error)
+    }
   }
 
   return (
