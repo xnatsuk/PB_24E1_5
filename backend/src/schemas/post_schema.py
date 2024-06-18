@@ -1,39 +1,32 @@
-from typing import ClassVar
+from typing import ClassVar, Union
 
 from src.schemas.base_schema import CreateBase, UpdateBase, InDbBase, ResponseBase
 
 
 class PostCreate(CreateBase):
     title: str
-    description: str | None = None
-    content: str | None = None
+    description: Union[str, None]
+    content: str
     likes: int = 0
 
 
 class PostUpdate(UpdateBase):
-    id: int
-    author: str
-    title: str | None = None
-    description: str | None = None
-    content: str | None = None
-    likes: int
-
-
-class Posts(ResponseBase):
-    id: int
-    author: str
-    title: str
-    description: str | None = None
-    content: str | None = None
-    likes: int
-
-    table_name: ClassVar[str] = "posts"
+    user_id: str
+    title: ClassVar[str]
+    description: ClassVar[str]
+    content: ClassVar[str]
+    likes: ClassVar[int]
 
 
 class PostInDB(InDbBase):
-    id: int
-    author: str
+    user_id: str
     title: str
-    description: str | None = None
-    content: str | None = None
+    description: str | None
+    content: str
     likes: int
+    created_at: str
+    updated_at: str
+
+
+class Posts(PostInDB, ResponseBase):
+    table_name: ClassVar[str] = "posts"
