@@ -1,4 +1,4 @@
-export function TopicPost({ post }) {
+export function PostDetail({ post }) {
   return (
     <div className="flex flex-col justify-between overflow-hidden p-5 w-full border-t border-orange-300 shadow-2xl rounded-lg">
       <div>
