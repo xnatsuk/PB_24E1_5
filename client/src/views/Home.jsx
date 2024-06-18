@@ -1,22 +1,13 @@
-import { useState } from 'react'
 import { PostsList } from '../components/PostsList'
 import { Greeting } from '../components/Greeting'
+import { useAuthStore } from '../stores/auth.store'
 
 export function Home() {
-  const [user] = useState({ name: 'Usuário' })
-  const [isLogged] = useState(false)
-
-  const text = 'à página inicial do fórum. Abaixo temos os tópicos: (em construção)'
+  const { user } = useAuthStore()
 
   return (
     <>
-      <Greeting
-        isLogged={isLogged}
-        user={user}
-        default="Visitante"
-        text={text}
-      />
-
+      <Greeting user={user} />
       <PostsList />
     </>
   )

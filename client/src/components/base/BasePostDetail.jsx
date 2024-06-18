@@ -30,7 +30,7 @@ export function BasePostDetail({
         </div>
 
         <div>
-          <h1 className="px-4 py-2 text-2xl text-orange-400">
+          <h1 className="px-4 py-2 text-2xl text-orange-300">
             {title}
           </h1>
 
